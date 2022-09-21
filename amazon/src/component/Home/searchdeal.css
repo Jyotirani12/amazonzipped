@@ -1,0 +1,22 @@
+.deal{
+    height:490px;
+    border:2px solid red;
+    display:inline-block;
+    margin-top:1%;
+    margin-left:2%;
+}
+.dealhead{
+    display:flex;
+}
+
+
+.card{
+    /* border:5px solid #22fd0d !important; */
+     height:430px;
+     display:flex !important;
+     
+ }
+ .card>img{
+     /* height:250px !important; */
+     width:100%;
+ }

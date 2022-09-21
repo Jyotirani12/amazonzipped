@@ -1,0 +1,64 @@
+#listing{
+    height:90%;
+    width:98%;
+    border:6px solid maroon;
+    margin-left:1%;
+    margin-top:2%;
+
+}
+#filter{
+    width:25%;
+    height:auto;
+   border:2px solid red;
+   box-shadow: 0px 0px 6px -1px rgb(0 0 10);
+    float:left;
+}
+
+.filter1{
+    margin-left:10px;
+}
+#filterItem{
+    width:75%;
+    height:auto;
+    display:flex;
+    margin-left:auto;
+    border:2px solid green;
+    /*box-shadow:0 0 2px 2px grey;*/
+   
+    float:left;
+}
+.col{
+    display:flex;
+    width:auto;
+    margin-left:2px;
+    color:red;
+
+}
+*{
+    color:Black;
+}
+.itemImage{
+    height:200px;
+    width:200px;
+}
+.mainItem{
+    height:300px;
+    
+}
+.card{
+    height:277px;
+    width:300px;
+    /* text-align: justify; */
+}
+.card>img{
+    height:150px;
+    width:150px;
+    
+    
+}
+.card-body{
+    text-align: center;
+}
+.card-img-top{
+    margin-left:70px;
+}
