@@ -25,6 +25,7 @@ const Routing=()=>{
      <Route exact path="/listing/:categoryId" component={ListingDress}/>
      <Route exact path="/details/:categoryId" component={Details}/>
      <Route exact path="/listingE/:categoryId" component={Electronics}/>
+     
     
         <Footer/>
         </div>

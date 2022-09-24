@@ -7,28 +7,31 @@ const dUrl="https://apilink1.herokuapp.com/deal";
 
 class SearchDeal extends Component{
     constructor(props){
-        console.log("inside")
+        // console.log("inside")
         super(props)
         this.state={
             dealData:''
         }
     }
-    renderDeal=(data)=>{
+    renderDeal=()=>{
+       
+        let data=this.state.dealData;
+         console.log(data)
         if(data){
             return data.map((item)=>{
                 return(
 
-                    <div className="row row-cols-1 row-cols-md-6 mx-2 my-2" key={item._id}>
-                        <div className="col">
+                    // <div className="row row-cols-1 row-cols-md-6 mx-2 my-2" key={item._id}>
+                        <div className="col" key={item._id}>
                                         <div className="card">
-                                                            <img src="https://i.ibb.co/Jcn6TyS/d1.png"  className="card-img-top" alt="..."/>
+                                                            <img src={data.image}  className="card-img-top" alt="..."/>
                                                             <div className="card-body">
-                                                                <h5 className="card-title">Card title</h5>
-                                                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                                <h5 className="card-title">{data.product_name}</h5>
+                                                                <p className="card-text">{data.Discount}</p>
                                                             </div>
                                         </div>
                         </div>
-                    </div>
+                    // </div>
                     
                 )
             })
@@ -44,8 +47,11 @@ render(){
             <div className="dealhead">
                 <h5>Deal Of The Day</h5>
             </div>
+            <div className="row row-cols-1 row-cols-md-6 mx-2 my-2">
+            {this.renderDeal()}
+            </div>
            
-        {this.renderDeal(this.state.dealData)}
+       
        
         </div>
         </>
@@ -58,7 +64,7 @@ render(){
 
 componentDidMount()
 {
-    fetch(dUrl,{method:'GET'})
+    fetch(`${dUrl}`,{method:'GET'})
     .then(res=>res.json())
     .then((data)=>{this.setState({dealData:data})})
 }

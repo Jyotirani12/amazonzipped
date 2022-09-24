@@ -13,6 +13,7 @@
 .card{
     /* border:5px solid #22fd0d !important; */
      height:430px;
+     width:263px;
      display:flex !important;
      
  }

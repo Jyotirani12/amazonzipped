@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 // import axios from 'axios';
 import SubcategoryF from '../filter/SubcategoryF';
 import CostFilter from '../filter/CostFilter';
+import BrandFilter from '../filter/BrandFilter';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/css/bootstrap-grid.css';
@@ -20,16 +21,9 @@ import CostFilter from '../filter/CostFilter';
                       
         }
     }
-    componentDidMount(){
-
-        let categoryId=this.props.match.params.categoryId;
-        sessionStorage.setItem('categoryId',categoryId)
-        fetch(`${url}${categoryId}`,{method:'GET'})
-        .then(res=>res.json())
-        .then((data)=>{this.setState({listingData:data})})
-       
-    }
+    
     renderItem=()=>{
+      console.log("electronics",this.state.listingData)
         let listingData=this.state.listingData;
         if(listingData){
        
@@ -62,6 +56,15 @@ import CostFilter from '../filter/CostFilter';
     setDataPerFilter=(data)=>{
         this.setState({ listingData:data})
     }
+    componentDidMount(){
+
+      let categoryId=this.props.match.params.categoryId;
+      sessionStorage.setItem('categoryId',categoryId)
+      fetch(`${url}${categoryId}`,{method:'GET'})
+      .then(res=>res.json())
+      .then((data)=>{this.setState({listingData:data})})
+     
+  }
       
     render(){
     //  console.log(this.state.listingData);
@@ -78,8 +81,13 @@ import CostFilter from '../filter/CostFilter';
                     <hr/>
                     <div>
                     <CostFilter categoryId={this.props.match.params.categoryId} 
-                      restPerSubcategory={(data) => {this.setDataPerFilter(data)}}/>
+                      restPerCost={(data) => {this.setDataPerFilter(data)}}/>
                     </div>
+                    <div>
+                    <BrandFilter categoryId={this.props.match.params.categoryId} 
+                      restPerBrand={(data) => {this.setDataPerFilter(data)}}/>
+                    </div>
+
                     
                    
                       </div> 
