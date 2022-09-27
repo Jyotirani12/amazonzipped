@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 
-const url = "https://zomatoajulypi.herokuapp.com/filter";
+const url = "https://apilink1.herokuapp.com/filter";
 
 class CostFilter extends Component{
 
@@ -12,9 +12,13 @@ class CostFilter extends Component{
         let hcost = cost[1]
         let costUrl;
         if(event.target.value === ""){
+            console.log(event.target.value)
             costUrl = `${url}/${categoryId}`
+            console.log(costUrl)
         }else{
-            costUrl = `${url}/${categoryId}?hcost=${hcost}&lcost=${lcost}`
+            console.log(event.target.value)
+            costUrl = `${url}/${categoryId}?lcost=${lcost}&hcost=${hcost}`
+            console.log(costUrl)
         }
         axios.get(costUrl)
         .then((res) => {this.props.restPerCost(res.data)})
@@ -24,6 +28,7 @@ class CostFilter extends Component{
 
     render(){
         return(
+
             <>
                 <center>Cost Filter</center>
                 <div style={{marginLeft:'15%'}} onChange={this.filterData}>

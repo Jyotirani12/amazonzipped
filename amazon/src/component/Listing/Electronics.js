@@ -1,14 +1,16 @@
 import React,{Component} from 'react';
 import './electronics.css';
 import {Link} from 'react-router-dom';
+//import {Link} from 'react';
 // import axios from 'axios';
 import SubcategoryF from '../filter/SubcategoryF';
 import CostFilter from '../filter/CostFilter';
 import BrandFilter from '../filter/BrandFilter';
+import Header from '../../Header';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/css/bootstrap-grid.css';
- const url="https://apidrop1.herokuapp.com/product/";
+ const url="https://apilink1.herokuapp.com/product/";
  
  class Electronics extends Component{
 
@@ -38,7 +40,10 @@ import BrandFilter from '../filter/BrandFilter';
                 <img src={item.Image} className="card-img-top" alt="..."/>
                 <div className="card-body">
                   <h5 className="card-title">{item.product_name}</h5>
-                  <p className="card-text">{item.Brand}</p>
+                
+                  <p className="card-text">{item.Brand[0].brand_id}</p>
+                  <p className="card-text">{item.Brand[0].brand_name}</p>
+
                   <p>Price: Rs.{item.Price}</p>
                   </div>
               </div>
@@ -70,6 +75,7 @@ import BrandFilter from '../filter/BrandFilter';
     //  console.log(this.state.listingData);
                     return(
                     <>
+                    <Header/>
                     <div id="listing">
                       <div id="filter">
                         <center> <h5>Filters</h5></center>
@@ -83,6 +89,7 @@ import BrandFilter from '../filter/BrandFilter';
                     <CostFilter categoryId={this.props.match.params.categoryId} 
                       restPerCost={(data) => {this.setDataPerFilter(data)}}/>
                     </div>
+                    <hr/>
                     <div>
                     <BrandFilter categoryId={this.props.match.params.categoryId} 
                       restPerBrand={(data) => {this.setDataPerFilter(data)}}/>

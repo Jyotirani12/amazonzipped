@@ -1,7 +1,9 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import SearchFirst from './SearchFirst.js';
 // import SearchSecond from './SearchSecond.js';
 import SearchDeal from './SearchDeal';
+import Header from '../../Header';
 // import ListingDress from '../Listing/ListingDress';
 
 
@@ -10,7 +12,7 @@ import SearchDeal from './SearchDeal';
 const Home=()=>{
     return(
        <>
-      
+      <Header/>
    
    <SearchFirst/>
    <SearchDeal/>
@@ -21,4 +23,4 @@ const Home=()=>{
    )
     
 }
-export default Home;
+export default withRouter(Home);
