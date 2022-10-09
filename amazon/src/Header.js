@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './header.css';
-import {Link,withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const url = "https://amazonuserapi.herokuapp.com/api/auth/userinfo"
 
@@ -37,9 +38,7 @@ class Header extends Component{
               <header>
       <nav>
         <div className="deflex">
-            {/* <a href="#"><img src="images/images.png" alt="logo" className="logo" width="60"
-                height="60" />
-            </a> */}
+           
             <a href="#"><img src="https://i.ibb.co/f0f0FsJ/images.png" alt="images" className="logo" width="60"
                 height="60" border="0"/></a>
             <div className="item">
@@ -51,18 +50,34 @@ class Header extends Component{
         </div>
         {/* <!-- //search box div --> */}
         <div className="searchBox deflex">
-            <button type="submit" className="all">All<i className="fa fa-sort-desc"></i>
-
-                
-             
-
-            </button>
-            <input type="text"/>
+           <div className="dropdown">
+  <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+    All
+  </button>
+  <ul className="dropdown-menu">
+    <li ><Link to="/listing/1" className="dropdown-item">Girl's Fashion</Link></li>
+    <li><Link to="/listingE/2" className="dropdown-item">Electronics</Link></li>
+    <li><Link to="/listingE/2" className="dropdown-item">Home & Kitchen</Link></li>
+  </ul>
+</div>
+            <input type="text" placeholder="search by product name"/>
             <button type="submit" className="search"><i className="fa fa-search"></i>
 
             </button>
 
         </div>
+        <div>
+         {/* <div className="dropdown">
+                        <select onChange={this.handleCategory}>
+                            <option>----SELECT YOUR CITY----</option>
+                            {this.renderCity(this.state.location)}
+                        </select>
+                        <select className="restSelect" onChange={this.handleRest}>
+                            <option>----SELECT YOUR RESTAURANTS----</option>
+                            {this.renderRest(this.state.restaurant)}
+                        </select>
+                    </div> */}
+        </div> 
         <div className="right deflex">
           <div className="item">
             <i className="fa fa-flag"></i><i className="fa fa-sort-desc"></i>
@@ -77,16 +92,28 @@ class Header extends Component{
             {/* <p>Hello,Sign In</p>
             <h5>Account & Lists<i className="fa fa-sort-desc"></i></h5> */}
           </div>
-          <div className="item">
+          {/* <div className="item">
             <p>Returns</p>
             <h5>& Orders</h5>
-          </div>
-          <div className="item">
+          </div> */}
+          {/* <div className="item">
             <h3><i className="fa fa-shopping-cart fa-2x"></i>Cart</h3>
             
-          </div>
+          </div> */}
         </div>
     </nav>
+    <div id="bd">
+                <div className="category">
+
+
+                     <li className="rb"> <Link to="/listing"> All</Link> </li>
+                     <li>  <Link to="/listing/1">Girl's Fashion </Link> </li>
+                     <li> <Link to="/listingE/2">Electronics</Link> </li>
+                    <li>  <Link to="/listing"> Home & Kitchen </Link> </li>
+
+
+                     </div>
+                     </div>
     <nav>
 
     </nav>
@@ -116,13 +143,18 @@ class Header extends Component{
         </div>
         {/* <!-- //search box div --> */}
         <div className="searchBox deflex">
-            <button type="submit" className="all">All<i className="fa fa-sort-desc"></i>
-
-                
-             
-
-            </button>
-            <input type="text"/>
+            {/* <button type="submit" className="all">All<i className="fa fa-sort-desc"></i> */}
+            <div className="dropdown">
+  <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown">
+    All
+  </button>
+  <ul className="dropdown-menu">
+    <li ><Link to="/listing/1" className="dropdown-item">Girl's Fashion</Link></li>
+    <li><Link to="/listingE/2" className="dropdown-item">Electronics</Link></li>
+    <li><Link to="/listing/3" className="dropdown-item">Home & Kitchen</Link></li>
+  </ul>
+</div>
+                     <input type="text" placeholder="Enter Product Name" />
             <button type="submit" className="search"><i className="fa fa-search"></i>
 
             </button>
@@ -142,16 +174,28 @@ class Header extends Component{
             {/* <p>Hello,Sign In</p>
             <h5>Account & Lists<i className="fa fa-sort-desc"></i></h5> */}
           </div>
-          <div className="item">
+          {/* <div className="item">
             <p>Returns</p>
             <h5>& Orders</h5>
-          </div>
-          <div className="item">
+          </div> */}
+          {/* <div className="item">
             <h3><i className="fa fa-shopping-cart fa-2x"></i>Cart</h3>
             
-          </div>
+          </div> */}
         </div>
     </nav>
+    <div id="bd">
+                <div className="category">
+
+
+                     <li className="rb"> <Link to="/listing"> All</Link> </li>
+                     <li>  <Link to="/listing/1">Girl's Fashion </Link> </li>
+                     <li> <Link to="/listingE/2">Electronics</Link> </li>
+                    <li>  <Link to="/listing/3"> Home & Kitchen </Link> </li>
+
+
+                     </div>
+                     </div>
     <nav>
 
     </nav>

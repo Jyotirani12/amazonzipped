@@ -11,7 +11,7 @@ render()
        <div id="categories">
             <div id="cat1">
                 <div id="cat11">
-                    <h5 style={{textAlign:"center"}}>Gaming Accessories</h5>
+                    <h5 style={{textAlign:"center"}}>Electronics Items</h5>
                 </div>
                 <div id="cat12">
 
@@ -38,27 +38,28 @@ render()
             {/* <!--shop by category section--> */}
             <div id="cat2">
             <div id="cat11">
-                <h5 style={{textAlign:'center'}}>Shop By Categories</h5>
+                <h5 style={{textAlign:'center'}}>Home & Kitchen Items</h5>
             </div>
             <div id="cat12">
 
-                <a href="#"><img src="https://i.ibb.co/55VWTK6/5.jpg" alt=" " className="cat1Img" /></a>
-                <p className="cat1P">Computer & Accessories</p>
+                <a href="#"><img src="https://i.ibb.co/vHmgvnb/kitchen1.jpg" alt=" " className="cat1Img" /></a>
+                <p className="cat1P">Table Runner</p>
             </div>
             <div id="cat13">
-                <img src="https://i.ibb.co/cQtbbJ0/6.jpg" alt=" " className="cat1Img" />
-                <p className="cat1P">Video Games</p>
+                <img src="https://i.ibb.co/Qc7h0Gz/kitchen4.jpg" alt=" " className="cat1Img" />
+                <p className="cat1P">Table Runner</p>
             </div>
             <div id="cat14">
-                <img src="https://i.ibb.co/41w0p1C/7.jpg"  alt=" " className="cat1Img" />
-                <p className="cat1P">Baby</p>
+                <img src="https://i.ibb.co/G3NdWrB/Kithen-2.jpg"  alt=" " className="cat1Img" />
+                <p className="cat1P">Dish Cover</p>
             </div>
             <div id="cat15">
-                <img src="https://i.ibb.co/1d09H2Q/8.jpg" alt="" className="cat1Img" />
-                <p className="cat1P">Toys</p>
+                <img src="https://i.ibb.co/v4Wjvmq/k35.jpg" alt="" className="cat1Img" />
+                <p className="cat1P">Coffee mMaker</p>
             </div>
             <div id="cat16">
-                <p className="cat1P"><a href="/listing.html" target="_blank">See More</a></p>
+            <Link to="/listing/3">See More</Link>
+                
             </div>
         </div>
         <div id="cat3">
@@ -67,7 +68,7 @@ render()
             </div>
             <div id="cat32">
 
-                <a href="#"><img src="https://i.ibb.co/gyVXwBC/9.jpg" alt="9" border="0" className="cat1Img" /></a> 
+                <img src="https://i.ibb.co/gyVXwBC/9.jpg" alt="9" border="0" className="cat1Img" /> 
               <Link to="/listing/1">See More</Link>
             </div>
 
@@ -94,7 +95,7 @@ render()
 
             </div>
             <div id="cat16">
-                <Link to="/listing/1">See More</Link>
+                <Link to="/listing/2">See More</Link>
             </div>
         </div>
             

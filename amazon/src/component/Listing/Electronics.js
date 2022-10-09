@@ -15,7 +15,7 @@ import Header from '../../Header';
  class Electronics extends Component{
 
     constructor(props){
-        console.log("indie const lsit",props)
+       // console.log("indie const lsit",props)
         super(props)
         this.state={
             listingData:'',
@@ -25,18 +25,18 @@ import Header from '../../Header';
     }
     
     renderItem=()=>{
-      console.log("electronics",this.state.listingData)
+    
         let listingData=this.state.listingData;
         if(listingData){
        
-            return listingData.map((item)=>{
+            return listingData.map((item,i)=>{
                     return(            
                     
-                    <Link to={`/details/${this.state.categoryId}?productId=${item.product_id}`}>
+                    <Link to={`/details/${this.state.categoryId}?productId=${item.product_id}`} key={i}>
                      
             
-              <div className="col" key={item._id}>
-              <div className="card mg-1">
+              <div className="col">
+              <div className="card mg-1 mt-2">
                 <img src={item.Image} className="card-img-top" alt="..."/>
                 <div className="card-body">
                   <h5 className="card-title">{item.product_name}</h5>
@@ -72,7 +72,7 @@ import Header from '../../Header';
   }
       
     render(){
-    //  console.log(this.state.listingData);
+  
                     return(
                     <>
                     <Header/>
@@ -99,7 +99,7 @@ import Header from '../../Header';
                    
                       </div> 
                         <div id="filterItem">
-                        <div className="row row-cols-1 row-cols-md-2  row-cols-lg-3 mg-1">
+                        <div className="row row-cols-1 row-cols-md-2  row-cols-lg-3 mg-1 mt-2">
                        
                           
                                 {this.renderItem()}   

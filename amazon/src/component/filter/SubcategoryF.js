@@ -8,16 +8,47 @@ class SubcategoryF extends Component{
     filterSubcategory = (event) => {
         let categoryId = this.props.categoryId;
         let subcategoryId = event.target.value;
+        sessionStorage.setItem('subcategoryId',subcategoryId);
+
         let outUrl;
-        if( subcategoryId=== ""){
-            outUrl = `${url}/${categoryId}`
-            console.log(outUrl)
-        }else{
-            outUrl= `${url}/${categoryId}?subcategoryId=${subcategoryId}`
-            console.log(outUrl)
+        if(!sessionStorage.getItem('lcost')&&sessionStorage.getItem('hcost')&& sessionStorage.getItem('BrandId'))
+        {
+            if( subcategoryId=== ""){
+                outUrl = `${url}/${categoryId}`
+                console.log(outUrl)
+                axios.get(outUrl)
+                .then((res) => {this.props.restPerSubcategory(res.data)})
+
+            }else{
+                outUrl= `${url}/${categoryId}?subcategoryId=${subcategoryId}`
+                console.log(outUrl)
+                axios.get(outUrl)
+                .then((res) => {this.props.restPerSubcategory(res.data)})
+            }
+           
+
         }
-        axios.get(outUrl)
-        .then((res) => {this.props.restPerSubcategory(res.data)})
+        else{
+            if( subcategoryId=== ""){
+                outUrl = `${url}/${categoryId}`
+                console.log(outUrl)
+                axios.get(outUrl)
+                .then((res) => {this.props.restPerSubcategory(res.data)})
+            }else if(sessionStorage.getItem('lcost')&&sessionStorage.getItem('hcost')){
+                outUrl= `${url}/${categoryId}?subcategoryId=${subcategoryId}&lcost=${sessionStorage.getItem('lcost')}&hcost=${sessionStorage.getItem('lcost')}`
+                axios.get(outUrl)
+            .then((res) => {this.props.restPerSubcategory(res.data)})
+            }
+            else if(sessionStorage.getItem('BrandId')){
+                outUrl= `${url}/${categoryId}?subcategoryId=${subcategoryId}&lcost=${sessionStorage.getItem('lcost')}&hcost=${sessionStorage.getItem('lcost')}&BrandId=${sessionStorage.getItem('BrandId')}`
+                axios.get(outUrl)
+                .then((res) => {this.props.restPerSubcategory(res.data)})
+
+            }
+           
+
+        }
+        
     }
     render(){
         

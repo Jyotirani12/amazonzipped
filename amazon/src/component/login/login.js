@@ -46,20 +46,20 @@ class Login extends Component{
                 <Header/>
                 <hr/>
                 <div className="container">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
+                    <div className="panel panel-success">
+                        <div className="panel-heading">
                             Login
                         </div>
-                        <div class="panel-body">
+                        <div className="panel-body">
                             <h3 style={{color:'red'}}>{this.state.message}</h3>
-                            <div class="form-group">
-                                <label for="email" class="control-label">Email</label>
-                                <input class="form-control" id="email" name="email" placeholder="email" value={this.state.email}
+                            <div className="form-group">
+                                <label htmlFor="email" className="control-label">Email</label>
+                                <input className="form-control" id="email" name="email" placeholder="email" value={this.state.email}
                                 onChange={this.handleChange}/>
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="control-label">Password</label>
-                                <input class="form-control" id="password" name="password" placeholder="Password" value={this.state.password}
+                            <div className="form-group">
+                                <label  htmlFor="password" className="control-label">Password</label>
+                                <input className="form-control" id="password" name="password" placeholder="Password" type="password" value={this.state.password}
                                 onChange={this.handleChange}/>
                             </div>
                             <button className="btn btn-info" onClick={this.handleSubmit}>Login</button>

@@ -59,7 +59,7 @@ class PlaceOrder extends Component{
     
 
     render(){
-        if(sessionStorage.getItem('loginStatus') === 'LoggedOut'){
+        if(!sessionStorage.getItem("loginStatus") || sessionStorage.getItem('loginStatus') === 'LoggedOut'){
             return(
                 <div>
                     <Header/>
@@ -85,22 +85,22 @@ class PlaceOrder extends Component{
                                     <input type="hidden" name="id" value={this.state.id}/>
                                     <input type="hidden" name="product_name" value={this.state.product_name}/>
                                     <div className="form-group col-md-6">
-                                        <label for="fname" className="control-label">FirstName</label>
+                                        <label htmlFor="fname" className="control-label">FirstName</label>
                                         <input className="form-control" id="fname" name="name" value={this.state.name}
                                         onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <label for="email" className="control-label">Email</label>
+                                        <label htmlFor="email" className="control-label">Email</label>
                                         <input className="form-control" name="email" value={this.state.email}
                                         onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <label for="phone" className="control-label">Phone</label>
+                                        <label htmlFor="phone" className="control-label">Phone</label>
                                         <input className="form-control" name="phone" value={this.state.phone}
                                         onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <label for="address" className="control-label">Address</label>
+                                        <label htmlFor="address" className="control-label">Address</label>
                                         <input className="form-control" name="address" value={this.state.address}
                                         onChange={this.handleChange}/>
                                     </div>

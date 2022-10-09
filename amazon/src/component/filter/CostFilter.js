@@ -9,21 +9,50 @@ class CostFilter extends Component{
         let categoryId = this.props.categoryId;
         let cost = (event.target.value).split('-')
         let lcost = cost[0];
-        let hcost = cost[1]
+        let hcost = cost[1];
+        sessionStorage.setItem('lcost',lcost);
+        sessionStorage.setItem('hcost',hcost);
+
         let costUrl;
-        if(event.target.value === ""){
-            console.log(event.target.value)
+        if(!sessionStorage.getItem('subcategoryId')&& sessionStorage.getItem('BrandId'))
+        {
+            if(event.target.value === ""){
+           
             costUrl = `${url}/${categoryId}`
             console.log(costUrl)
         }else{
-            console.log(event.target.value)
+           
             costUrl = `${url}/${categoryId}?lcost=${lcost}&hcost=${hcost}`
             console.log(costUrl)
         }
         axios.get(costUrl)
         .then((res) => {this.props.restPerCost(res.data)})
        
-      
+
+        }
+        else {
+            if(event.target.value === ""){
+           
+                costUrl = `${url}/${categoryId}`
+                // console.log(costUrl)
+            }else if(sessionStorage.getItem('subcategoryId')){
+               
+                costUrl = `${url}/${categoryId}?lcost=${lcost}&hcost=${hcost}&subcategoryId=${sessionStorage.getItem('subcategoryId')}`
+            
+        }
+        else if(sessionStorage.getItem('BrandId')){
+            costUrl = `${url}/${categoryId}?lcost=${lcost}&hcost=${hcost}&BrandId=${sessionStorage.getItem('BrandId')}`
+
+
+        }
+        else{
+            costUrl = `${url}/${categoryId}?lcost=${lcost}&hcost=${hcost}&BrandId=${sessionStorage.getItem('BrandId')}&subcategoryId=${sessionStorage.getItem('subcategoryId')}`
+
+        }
+        axios.get(costUrl)
+        .then((res) => {this.props.restPerCost(res.data)})
+        
+    }
     }
 
     render(){
@@ -31,7 +60,7 @@ class CostFilter extends Component{
 
             <>
                 <center>Cost Filter</center>
-                <div style={{marginLeft:'15%'}} onChange={this.filterData}>
+                <div style={{"marginLeft":'15%',"display":'flex','flexDirection':'column'}} onChange={this.filterData}>
                     <label className="radio">
                         <input type="radio" name="cuisine" value=""/>All
                     </label>

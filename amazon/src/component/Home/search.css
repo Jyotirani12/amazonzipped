@@ -1,0 +1,20 @@
+.dropdown{
+    height:50px;
+    width:98%;
+    margin-top:1%;
+    /* margin-left:25%; */
+    /* position:absolute; */
+    background-color:brown;
+}
+
+select{
+    height:50px;
+    width:21%;
+    font-size:18px;
+    text-align: center;
+    margin-left:25%;
+}
+.restSelect{
+    width:31%;
+    margin-left:0%;
+}

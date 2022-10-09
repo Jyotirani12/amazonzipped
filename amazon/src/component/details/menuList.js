@@ -28,15 +28,15 @@ class MenuDisplay extends Component{
 
     renderMenu = ({menudata}) => {
         if(menudata){
-            return menudata.map((item) => {
+            return menudata.map((item,i) => {
                 return(
-                    <div key={item.product_id}>
-                        <div className="col-md-7">
+                    <div key={i}>
+                        <div className="col-md-4">
                             <b>{item.product_id}</b>
-                            <img src={item.Image} style={{height:80,width:80}}/> &nbsp;
+                            <img src={item.Image} style={{height:80,width:80}} alt="..."/> &nbsp;
                             {item.product_name} - Rs.{item.Price}
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-2">
                             <button className="btn btn-success"
                             onClick={() => {this.placeOrder(item.product_id)}}>
                                 <span className="glyphicon glyphicon-plus"></span>

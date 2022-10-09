@@ -3,13 +3,16 @@ import axios from 'axios';
 
 const url = "https://apilink1.herokuapp.com/filter";
 
-class SubcategoryF extends Component {
+class BrandFilter extends Component {
 
     filterSubcategory = (event) => {
         let categoryId = this.props.categoryId;
         let BrandId = event.target.value;
+        sessionStorage.setItem('BrandId',BrandId);
         let outUrl;
-        if (BrandId === "") {
+        if(!sessionStorage.getItem('subcategoryId')&& sessionStorage.getItem('lcost')&&sessionStorage.getItem('hcost'))
+        {
+            if (BrandId === "") {
             outUrl = `${url}/${categoryId}`
             console.log(outUrl)
         } else {
@@ -18,6 +21,34 @@ class SubcategoryF extends Component {
         }
         axios.get(outUrl)
             .then((res) => { this.props.restPerBrand(res.data) })
+
+        }
+        else {
+            if (BrandId === "") {
+                outUrl = `${url}/${categoryId}`
+               
+            }  else if(sessionStorage.getItem('subcategoryId')) {
+
+                outUrl = `${url}/${categoryId}?BrandId=${BrandId}&subcategoryId=${sessionStorage.getItem('subcategoryId')}`
+                console.log(outUrl)
+            }
+            
+                else if(sessionStorage.getItem('lcost')&&sessionStorage.getItem('hcost')) {
+
+                    outUrl = `${url}/${categoryId}?BrandId=${BrandId}&lcost=${sessionStorage.getItem('lcost')}&hcost=${sessionStorage.getItem('lcost')}`
+                   
+                }
+                else{
+                    outUrl = `${url}/${categoryId}?BrandId=${BrandId}&lcost=${sessionStorage.getItem('lcost')}&hcost=${sessionStorage.getItem('lcost')}&subcategoryId=${sessionStorage.getItem('subcategoryId')}`
+
+                
+
+            }
+            axios.get(outUrl)
+                .then((res) => { this.props.restPerBrand(res.data) })
+        }
+        
+        
     }
     render() {
        // let categoryId = this.props.categoryId;
@@ -26,7 +57,7 @@ class SubcategoryF extends Component {
                 <>
                     <center>Brand </center>
 
-                    <div id="subcategory" style={{ "marginLeft": '15%', "display": 'flex' }} onChange={this.filterSubcategory}>
+                    <div id="subcategory" style={{ "marginLeft": '15%', "display": 'flex','flexDirection':'column' }} onChange={this.filterSubcategory}>
                         <label className="radio">
                             <input type="radio" name="subcategory" value="" />All
                         </label>
@@ -55,44 +86,11 @@ class SubcategoryF extends Component {
 
         }
     }
-        // else if (categoryId === 1) {
-        //     return (
-        //         <>
-        //             <center>Brand </center>
-
-        //             <div id="subcategory" style={{ "marginLeft": '15%', "display": 'flex' }} onChange={this.filterSubcategory}>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="" />All
-        //                 </label>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="1" />Gucci
-        //                 </label>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="2" />Westsite
-        //                 </label>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="12" />AAYA
-        //                 </label>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="14" />Purshottam Wala
-        //                 </label>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="15" />Sheetal Associates
-        //                 </label>
-        //                 <label className="radio">
-        //                     <input type="radio" name="subcategory" value="16" />Libas
-        //                 </label>
-
-
-        //             </div>
-
-
-        //         </>
-        //     )
+       
         
 
 
     
 
 
-export default SubcategoryF;
+export default BrandFilter;

@@ -7,6 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import MenuDisplay from './menuList';
 import Header from '../../Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // const url="https://apidrop1.herokuapp.com/product/1";
  const url = "https://apilink1.herokuapp.com/details"
 
@@ -44,15 +45,15 @@ class Details extends Component {
         this.setState({userItem:data})
     }
     render(){
-        console.log(this.state.dressdetails)
+       
         let {dressdetails}=this.state;
-        console.log(dressdetails)
+       
         return (
             <>
             <Header/>
              <div id="mainContent">
              <div className="imgDiv">
-                <img src={dressdetails.Image} alt="image"/>
+                <img src={dressdetails.Image} alt="im"/>
             </div>
             <div className="contentDiv">
                 <h2>{dressdetails.product_name}</h2>
@@ -62,11 +63,7 @@ class Details extends Component {
                 <h3>New Price: Rs.{dressdetails.Price}</h3>
                 <h5>inclusive of all taxes</h5>
                 <h3>{dressdetails.description}</h3>
-                <div>
-                            <Link to={`/listing/${this.state.categoryId}`} className="btn btn-danger">Back</Link> &nbsp;
-                            <button className="btn btn-success" onClick={this.proceed}>Add To Cart</button>
-                        </div>
-           
+                        
             <Tabs>
                             <TabList>
                                 <Tab>About Us</Tab>
@@ -83,12 +80,19 @@ class Details extends Component {
                             </TabPanel>
                            
                         </Tabs>
+                       
+           </div>
                         <div className="col-md-12">
+                        <div >
+                            <Link to={`/listing/${this.state.categoryId}`} className="btn btn-danger">Back</Link> &nbsp;
+                            <button className="btn btn-success" onClick={this.proceed}>Add To Cart</button>
+                        </div>
+                        <hr/>Click Below to add Items
                     <MenuDisplay menudata={this.state.menuList}
                     finalOrder={(data)=>{this.addToCart(data)}}/>
                 </div>
                 </div>
-             </div>
+             
              
              
              
